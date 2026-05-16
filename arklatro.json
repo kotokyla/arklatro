@@ -1,0 +1,11 @@
+{
+  "id": "arklatro",
+  "name": "arklatro",
+  "author": ["kotokyla"],
+  "description": "Arknights OST",
+  "prefix": "arklatro",
+  "dependencies": ["Steamodded (>=1.0.0~ALPHA-0909a)"],
+  "conflicts": [],
+  "main_file": "main.lua",
+  "version": "0.0.1"
+}
