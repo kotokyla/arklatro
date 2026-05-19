@@ -1,8 +1,7 @@
-titleTable = {"sys_title.ogg", "sys_title_old.ogg"}
 blindTable = {"indust.ogg", "normal02.ogg"}
 bossTable = {"blade.ogg", "alive.ogg", "pyrite.ogg"}
 
-if math.random(1, 100)~=67 then title=titleTable[1] else title=titleTable[2] end
+if math.random(1, 100)~=67 then title="sys_title.ogg" else title="sys_title_old.ogg" end
 SMODS.Sound({
     pitch = 1,
     key = "music_title",
