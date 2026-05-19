@@ -2,26 +2,37 @@ titleTable = {"sys_title.ogg", "sys_title_old.ogg"}
 blindTable = {"indust.ogg", "normal02.ogg"}
 bossTable = {"blade.ogg", "alive.ogg", "pyrite.ogg"}
 
-blind = blindTable[math.random(#blindTable)]
-boss = bossTable[math.random(#bossTable)]
-
 if math.random(1, 100)~=67 then title=titleTable[1] else title=titleTable[2] end
 SMODS.Sound({
     pitch = 1,
-    key = "music_title_old",
+    key = "music_title",
     path = title,
     select_music_track = function()
         return (G.STATE == G.STATES.MENU) and 10
     end, })
 
+for i=1,8 do
 SMODS.Sound({
     pitch = 1,
-    key = "music_blind",
-    path = blind,
+    key = 'music_blind_'..i,
+    path = blindTable[math.random(#blindTable)],
+    sync = true,
     select_music_track = function()
-        return (G.GAME and G.GAME.round_resets.ante >= 1) and 0 or false
+        return (G.GAME and G.GAME.round_resets.ante == i) and 0 or false
     end,
 })
+end
+-- for i=9,39,5 do
+-- SMODS.Sound({
+--     pitch = 1,
+--     key = 'music_blind_'..i,
+--     path = blindTable[math.random(#blindTable)],
+--     sync = true,
+--     select_music_track = function()
+--         return (G.GAME and G.GAME.round_resets.ante == i) and 0 or false
+--     end,
+-- })
+-- end
 
 SMODS.Sound({
     pitch = 1,
@@ -31,13 +42,13 @@ SMODS.Sound({
         return G.GAME and G.shop and 10
     end,
 })
-
+for i=1,39 do
 SMODS.Sound({
     pitch = 1,
-    key = "music_boss",
-    path = boss,
+    key = "music_boss_"..i,
+    path = bossTable[math.random(#bossTable)],
     sync = false,
     select_music_track = function()
-        return (G.GAME and G.GAME.blind and G.GAME.blind.config.blind.boss) and 1 or false
+        return (G.GAME and G.GAME.blind) and (G.GAME.round_resets.ante == i and G.GAME.blind.config.blind.boss) and 1 or false
     end,
-})
+}) end
